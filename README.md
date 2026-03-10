@@ -1,96 +1,73 @@
-[[ 简体中文 ]](https://github.com/liandu2024/AnGe-Panel/blob/main/README.md) |
-[[ English ]](https://github.com/liandu2024/AnGe-Panel/blob/main/README_EN.md)
+# Ywd-Panel
 
-<div align=center>
+Ywd-Panel 是一个面向 NAS / HomeLab / 自托管服务场景的轻量导航与状态面板。
 
-<img src="./doc/images/main-preview.jpg" width="100%" />
+当前仓库正基于现有底座收口为 **MVP 首版**，目标是先做到：
+- 可用
+- 可部署
+- 可继续迭代
 
-# AnGe-Panel
+## 当前首版目标
 
-[![Github](https://img.shields.io/badge/Github-123456?logo=github&labelColor=242424)](https://github.com/liandu2024/AnGe-Panel)
-[![docker](https://img.shields.io/badge/docker-123456?logo=docker&logoColor=fff&labelColor=1c7aed)](https://github.com/liandu2024/AnGe-Panel/pkgs/container/ange-panel) 
-[![Telegram](https://img.shields.io/badge/Telegram-123456?logo=telegram&labelColor=229ED9)](https://t.me/angeworld2024)
-<br>
+Ywd-Panel MVP 聚焦 4 件事：
 
-</div>
+1. **分组导航卡片**
+2. **多地址支持**（内网 / 外网）
+3. **基础状态展示**（已接入首版服务卡状态点）
+4. **Docker 可部署**
 
-A perfect website navigation + webpage bookmarks panel.
+## 当前保留的核心能力
 
-完美的网站导航 + 网页收藏夹。
+- 网站导航分组
+- 网页收藏分组
+- 分组管理
+- 内网 / 外网双地址切换
+- 服务卡状态点（online / offline / unknown）
+- 基础样式配置
+- 登录与用户信息
+- 本地部署能力
 
----
+## 当前主动后置的能力
 
-## 主要功能
+为了尽快交付首版，这些能力当前不作为重点：
 
-### 1) 左侧分组目录条（快速定位）
-![](./doc/images/sidebar-nav.jpg)
+- 复杂 Docker 管理
+- 多用户权限体系扩展
+- 上传文件管理
+- 导入导出工具强化
+- 重后台功能
 
-- 页面左侧新增"分组目录条"，点击圆点可 **一键跳转** 到对应分组。
-- 分组多的时候，不用一直往下滑找。
-
-### 2) 网站 + 网页 两种收藏模式
-- **网站**：适合收藏「一个站点」和它的入口（比如 NAS、博客、后台管理）。
-- **网页**：适合收藏「一篇文章 / 一个页面」的链接（比如知乎文章、头条链接、教程页面）。
-- 你可以在"网站 / 网页"之间切换，搜索条件也会保持，不会丢。
-
-### 3) 网页收藏更好用
-![](./doc/images/webbookmarks.jpg)
-
-- 网页列表支持：一键置顶/取消置顶、快速编辑、快速删除。
-- 置顶/新建/修改/删除 **不会整页刷新**，界面不会"闪一下/跳一下"。
-
-### 4) 图标 / 壁纸 分开管理，支持复用
-- 上传图片时区分"图标"和"壁纸"，避免混在一起不好找。
-- 已上传的图标/壁纸可以在历史里 **重复选择复用**，不需要每次重新上传。
-
-### 5) 一些贴心的体验优化
-- 链接去重校验（避免重复收藏同一 URL）。
-- 列表标题自动省略、需要时再悬停看全名。
-- 移动端体验优化（更紧凑、更清爽）。
-
-![](./doc/images/mobile-1.jpg)
-![](./doc/images/mobile-2.jpg)
-
-## 🐳 Docker 部署
-
-在支持 Docker 设备上执行以下指令：
+## 本地开发
 
 ```bash
-docker run -d --name ange-panel --restart=unless-stopped \
-  -p 3002:3002 \
-  -v /root/ange-data:/data \
-  ghcr.io/liandu2024/ange-panel:latest
+npm install
+npm run dev
 ```
 
-> 说明：数据持久化存储在 `/root/ange-data` 目录，首次启动后可在面板内修改配置。
+## 构建
 
-## 🔐 首次登录
+```bash
+npm run build
+```
 
-登录网址：http://[部署设备的IP]:3002
+## Docker 部署
 
-- **默认管理员账号**：`admin`
-- **默认管理员密码**：`admin`
+```bash
+docker compose up -d --build
+```
 
-首次启动时会自动创建示例分组和示例网站/网页链接，方便快速体验功能。
+默认持久化目录：
 
-> ⚠️ 首次登录后请尽快修改密码！
+- `./data`
 
-## 📋 文档
+默认访问地址：
 
-- [中文文档](https://github.com/liandu2024/AnGe-Panel/blob/main/README.md)
-- [English Documentation](https://github.com/liandu2024/AnGe-Panel/blob/main/README_EN.md)
+- `http://<你的主机IP>:3002`
 
-## 🏖️ 其他
+## 说明
 
-- [Telegram 群](https://t.me/angeworld2024)
-- [安格超市](https://blog.angeworld.cc/market)
+当前版本仍处于从既有项目向 `Ywd-Panel` 收口的阶段，因此仓库内部仍可能保留部分历史命名。这不影响当前 MVP 改造推进，后续会继续逐步统一。
 
----
+## 致谢
 
-## ❤️ 感谢
-
-- 本项目基于 [Sun-Panel v1.3.0 开源版](https://github.com/hslr-s/sun-panel) 项目做的二次开发，感谢原作者辛勤付出！
-
----
-
-[![Star History Chart](https://api.star-history.com/svg?repos=liandu2024/AnGe-Panel&type=Date)](https://star-history.com/#liandu2024/AnGe-Panel&Date)
+本项目底座源自对既有开源面板项目的二次整理与收口，当前目标是形成更聚焦的 `Ywd-Panel` 首版交付。

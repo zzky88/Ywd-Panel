@@ -28,15 +28,15 @@ onMounted(() => {
     <div class="flex flex-col items-center justify-center">
       <img :src="srcSvglogo" width="100" height="100" alt="">
       <div class="text-3xl font-semibold">
-        AnGe-Panel
+        Ywd-Panel
       </div>
       <div class="text-xl">
         <NGradientText type="info">
-          <a href="https://github.com/liandu2024/AnGe-Panel/releases" class="font-semibold" :title="$t('apps.about.viewUpdateLog')" target="_blank">Ver: {{ versionName }}</a>
+          <span class="font-semibold">Ver: {{ versionName }}</span>
         </NGradientText>
       </div>
-      <div class="mt-2">
-        <a href="https://github.com/liandu2024/AnGe-Panel/releases" target="_blank" class="link">{{ $t('apps.about.checkUpdate') }}</a>
+      <div class="mt-2 text-sm text-gray-500">
+        MVP preview build
       </div>
     </div>
 
@@ -47,15 +47,15 @@ onMounted(() => {
       <div class="flex mt-[10px] flex-wrap justify-center">
         <div class="flex items-center mx-[10px]">
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcGithub" alt="">
-          <a href="https://github.com/liandu2024/AnGe-Panel" target="_blank" class="link">Github</a>
+          <span class="link">GitHub (to be connected)</span>
         </div>
         <div class="flex items-center mx-[10px]">
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcTelegram" alt="">
-          <a href="https://t.me/angeworld2024" target="_blank" class="link">安格视界TG群</a>
+          <span class="link">Self-hosted dashboard MVP</span>
         </div>
         <div class="flex items-center mx-[10px]">
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcMarket" alt="">
-          <a href="https://blog.angeworld.cc/market" target="_blank" class="link">安格超市</a>
+          <span class="link">Navigation + status panel</span>
         </div>
       </div>
 
@@ -65,8 +65,8 @@ onMounted(() => {
         </NTag>
       </div>
 
-      <div class="mt-4 text-sm text-gray-500">
-        <a href="https://github.com/hslr-s/sun-panel" target="_blank" class="link">本项目基于 Sun-Panel 开源版 v1.3.0 二次开发</a>
+      <div class="mt-4 text-sm text-gray-500 text-center">
+        当前正在基于现有底座收口为 Ywd-Panel 的首版 MVP。
       </div>
     </div>
   </div>

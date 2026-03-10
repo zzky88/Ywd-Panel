@@ -22,5 +22,6 @@ func InitItemIcon(router *gin.RouterGroup) {
 	rPublic := router.Group("", middleware.PublicModeInterceptor)
 	{
 		rPublic.POST("/panel/itemIcon/getListByGroupId", itemIcon.GetListByGroupId)
+		rPublic.POST("/panel/itemIcon/checkStatus", itemIcon.CheckStatus)
 	}
 }

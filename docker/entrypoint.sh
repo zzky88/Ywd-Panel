@@ -2,7 +2,7 @@
 set -eu
 
 APP_DIR="/app"
-DATA_DIR="${ANGE_DATA_DIR:-/data}"
+DATA_DIR="${YWD_DATA_DIR:-${ANGE_DATA_DIR:-/data}}"
 
 # Create persistent dirs
 mkdir -p "${DATA_DIR}/conf" "${DATA_DIR}/database" "${DATA_DIR}/uploads" "${DATA_DIR}/runtime/temp"

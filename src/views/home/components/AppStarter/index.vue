@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { NLayout, NLayoutContent, NLayoutSider, NSpace } from 'naive-ui'
-import { useAuthStore } from '@/store'
 import { AppLoader, RoundCardModal, SvgIcon } from '@/components/common'
 import { t } from '@/locales'
 
@@ -19,7 +18,7 @@ const emit = defineEmits<{
   (e: 'update:visible', visible: boolean): void
 }>()
 
-const componentName = ref('UserInfo')
+const componentName = ref('ItemGroupManage')
 const collapsed = ref(false)
 const screenWidth = ref(0)
 const isSmallScreen = ref(false)
@@ -29,9 +28,9 @@ const height = ref('500px')
 
 const apps = ref<App[]>([
   {
-    name: t('apps.userInfo.appName'),
-    componentName: 'UserInfo',
-    icon: 'material-symbols-person-edit-outline-rounded',
+    name: t('apps.itemGroupManage.appName'),
+    componentName: 'ItemGroupManage',
+    icon: 'material-symbols-ad-group-outline-rounded',
   },
   {
     name: t('apps.baseSettings.appName'),
@@ -39,19 +38,9 @@ const apps = ref<App[]>([
     icon: 'ion-color-palette-outline',
   },
   {
-    name: t('apps.itemGroupManage.appName'),
-    componentName: 'ItemGroupManage',
-    icon: 'material-symbols-ad-group-outline-rounded',
-  },
-  {
-    name: t('apps.uploadsFileManager.appName'),
-    componentName: 'UploadFileManager',
-    icon: 'tabler:file-upload',
-  },
-  {
-    name: t('apps.exportImport.appName'),
-    componentName: 'ImportExport',
-    icon: 'icon-park-outline-import-and-export',
+    name: t('apps.userInfo.appName'),
+    componentName: 'UserInfo',
+    icon: 'material-symbols-person-edit-outline-rounded',
   },
   {
     name: t('apps.about.appName'),
@@ -59,8 +48,6 @@ const apps = ref<App[]>([
     icon: 'lucide-info',
   },
 ])
-
-const authStore = useAuthStore()
 
 const show = computed({
   get: () => props.visible,
@@ -92,16 +79,6 @@ function handleResize() {
 }
 
 onMounted(() => {
-  const adminApp: App = {
-    name: t('adminSettingUsers.appName'),
-    componentName: 'Users',
-    icon: 'lucide-users',
-    auth: 1,
-  }
-  // 初始化
-  if (authStore.userInfo?.role === 1)
-    apps.value.push(adminApp)
-
   window.addEventListener('resize', handleResize)
   handleResize()
 })

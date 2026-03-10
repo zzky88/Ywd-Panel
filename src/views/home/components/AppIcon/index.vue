@@ -43,10 +43,11 @@ const textColor = computed(() => {
       :style="{ background: itemInfo?.icon?.backgroundColor || defaultBackground }"
     >
       <!-- 图标 -->
-      <div class="app-icon-info-icon w-[70px] h-[70px]">
+      <div class="app-icon-info-icon w-[70px] h-[70px] relative">
         <div class="w-[70px] h-full flex items-center justify-center ">
           <ItemIcon :item-icon="itemInfo?.icon" force-background="transparent" :size="50" class="overflow-hidden rounded-xl" />
         </div>
+        <span v-if="itemInfo?.status" class="status-dot" :class="`status-${itemInfo.status}`" />
       </div>
 
       <!-- 文字 -->
@@ -70,10 +71,11 @@ const textColor = computed(() => {
     <!-- 极简(小)图标（APP） -->
     <div v-if="style === PanelPanelConfigStyleEnum.icon" class="app-icon-small">
       <div
-        class="app-icon-small-icon overflow-hidden rounded-2xl sunpanel w-[70px] h-[70px] mx-auto rounded-2xl transition-all duration-200 hover:shadow-[0_0_20px_10px_rgba(0,0,0,0.2)]"
+        class="app-icon-small-icon overflow-hidden rounded-2xl sunpanel w-[70px] h-[70px] mx-auto rounded-2xl transition-all duration-200 hover:shadow-[0_0_20px_10px_rgba(0,0,0,0.2)] relative"
         :title="itemInfo?.description"
       >
         <ItemIcon :item-icon="itemInfo?.icon" />
+        <span v-if="itemInfo?.status" class="status-dot" :class="`status-${itemInfo.status}`" />
       </div>
       <div
         v-if="!iconTextIconHideTitle"
@@ -85,3 +87,28 @@ const textColor = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.status-dot {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.status-online {
+  background: #22c55e;
+}
+
+.status-offline {
+  background: #ef4444;
+}
+
+.status-unknown {
+  background: #a3a3a3;
+}
+</style>

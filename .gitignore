@@ -53,5 +53,6 @@ service/web/
 
 # runtime data (keep seed/ tracked)
 /database/
+/data/
 uploads/*
 !uploads/.gitkeep

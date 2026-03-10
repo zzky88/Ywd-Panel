@@ -48,3 +48,10 @@ export function getSiteFavicon<T>(url: string) {
     data: { url },
   })
 }
+
+export function checkStatus<T>(items: { id: number, url: string }[]) {
+  return post<T>({
+    url: '/panel/itemIcon/checkStatus',
+    data: { items },
+  })
+}

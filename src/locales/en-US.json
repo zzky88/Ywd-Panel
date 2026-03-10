@@ -34,7 +34,7 @@
     "1400": "Parameter format error"
   },
   "appLauncher": {
-    "title": "System Applications"
+    "title": "Ywd-Panel Console"
   },
   "apps": {
     "about": {
@@ -131,7 +131,7 @@
     "action": "Action",
     "add": "Add",
     "addSuccess": "Added successfully",
-    "appName": "Sun-Panel",
+    "appName": "Ywd-Panel",
     "backgroundColor": "Background color",
     "cancel": "Cancel",
     "confirm": "Confirm",

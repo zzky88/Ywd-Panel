@@ -14,6 +14,7 @@ declare namespace Panel {
         description?: string
         openMethod: number
         itemIconGroupId ?:number
+        status?: 'online' | 'offline' | 'unknown'
     }
 
     interface ItemIconGroup extends Common.InfoBase {

@@ -34,7 +34,7 @@
     "1400": "参数格式错误"
   },
   "appLauncher": {
-    "title": "系统应用"
+    "title": "Ywd-Panel 控制台"
   },
   "apps": {
     "about": {
@@ -131,7 +131,7 @@
     "action": "操作",
     "add": "添加",
     "addSuccess": "添加成功",
-    "appName": "Sun-Panel",
+    "appName": "Ywd-Panel",
     "backgroundColor": "背景颜色",
     "cancel": "取消",
     "confirm": "确定",

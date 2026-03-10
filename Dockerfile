@@ -17,7 +17,7 @@ RUN npm run build
 # build backend
 # 最新alpine3.19导致sqlite3编译失败(https://github.com/mattn/go-sqlite3/issues/1164，
 # 临时解决方案:https://github.com/mattn/go-sqlite3/pull/1177)
-# sun-panel暂时解决方案使用golang:1.21-alpine3.18（因旧版本使用没问题，短期内较稳定） 
+# 当前沿用 golang:1.21-alpine3.18，规避 sqlite3 在较新 Alpine 上的兼容问题。
 FROM golang:1.21-alpine3.18 as server_image
 
 WORKDIR /build
@@ -43,7 +43,7 @@ COPY ./structs ./structs
 RUN apk add --no-cache bash curl gcc git musl-dev
 
 RUN go env -w GO111MODULE=on \
-    && go build -o ange-panel --ldflags="-X sun-panel/global.RUNCODE=release -X sun-panel/global.ISDOCKER=docker" ./main.go
+    && go build -o ywd-panel --ldflags="-X sun-panel/global.RUNCODE=release -X sun-panel/global.ISDOCKER=docker" ./main.go
 
 
 # run_image
@@ -53,7 +53,7 @@ WORKDIR /app
 
 COPY --from=web_image /build/dist /app/web
 
-COPY --from=server_image /build/ange-panel /app/ange-panel
+COPY --from=server_image /build/ywd-panel /app/ywd-panel
 
 # Seed template (db + uploads + conf) shipped with image
 COPY ./seed /app/seed
@@ -67,9 +67,9 @@ COPY ./docker/entrypoint.sh /entrypoint.sh
 EXPOSE 3002
 
 RUN apk add --no-cache bash ca-certificates su-exec tzdata \
-    && chmod +x /app/ange-panel /entrypoint.sh \
-    && test -f /app/ange-panel \
-    && /app/ange-panel -config
+    && chmod +x /app/ywd-panel /entrypoint.sh \
+    && test -f /app/ywd-panel \
+    && /app/ywd-panel -config
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/app/ange-panel"]
+CMD ["/app/ywd-panel"]

@@ -10,7 +10,7 @@ function updateIsMobile() {
 import { AppIcon, AppStarter, EditItem } from './components'
 import { Clock, SearchBox, SystemMonitor } from '@/components/deskModule'
 import { SvgIcon, SvgIconOnline } from '@/components/common'
-import { deletes, edit, getListByGroupId, saveSort } from '@/api/panel/itemIcon'
+import { checkStatus, deletes, edit, getListByGroupId, saveSort } from '@/api/panel/itemIcon'
 import { getList as getGroupList } from '@/api/panel/itemIconGroup'
 
 import { setTitle, updateLocalUserInfo } from '@/utils/cmn'
@@ -147,11 +147,40 @@ function getList() {
   })
 }
 
+function refreshItemStatuses(itemGroupIndex: number) {
+  const groupItems = items.value[itemGroupIndex]?.items || []
+  const targets = groupItems
+    .filter(item => item.id && ((panelState.networkMode === PanelStateNetworkModeEnum.lan ? item.lanUrl : item.url) || item.url))
+    .map(item => ({
+      id: item.id as number,
+      url: ((panelState.networkMode === PanelStateNetworkModeEnum.lan ? item.lanUrl : item.url) || item.url) as string,
+    }))
+
+  if (targets.length === 0)
+    return
+
+  checkStatus<Record<string, { status: 'online' | 'offline' }>>(targets).then((res) => {
+    if (res.code !== 0)
+      return
+
+    const statusMap = res.data || {}
+    groupItems.forEach((item) => {
+      const key = String(item.id)
+      item.status = statusMap[key]?.status || 'unknown'
+    })
+  }).catch(() => {
+    groupItems.forEach((item) => {
+      item.status = 'unknown'
+    })
+  })
+}
+
 // 从后端获取组下面的图标
 function updateItemIconGroupByNet(itemIconGroupIndex: number, itemIconGroupId: number) {
   getListByGroupId<Common.ListResponse<Panel.ItemInfo[]>>(itemIconGroupId).then((res) => {
     if (res.code === 0) {
-      items.value[itemIconGroupIndex].items = res.data.list
+      items.value[itemIconGroupIndex].items = res.data.list.map(item => ({ ...item, status: 'unknown' }))
+      refreshItemStatuses(itemIconGroupIndex)
       if (currentSearchKeyword.value) {
         itemFrontEndSearch(currentSearchKeyword.value)
       }
@@ -407,6 +436,7 @@ function handleEditSuccess(item: Panel.ItemInfo) {
 
 function handleChangeNetwork(mode: PanelStateNetworkModeEnum) {
   panelState.setNetworkMode(mode)
+  items.value.forEach((_, index) => refreshItemStatuses(index))
   if (mode === PanelStateNetworkModeEnum.lan)
     ms.success(t('panelHome.changeToLanModelSuccess'))
 

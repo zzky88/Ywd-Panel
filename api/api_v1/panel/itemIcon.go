@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
@@ -26,6 +27,62 @@ import (
 )
 
 type ItemIcon struct {
+}
+
+type ItemStatusCheckItem struct {
+	ID  uint   `json:"id"`
+	URL string `json:"url"`
+}
+
+type ItemStatusCheckReq struct {
+	Items []ItemStatusCheckItem `json:"items"`
+}
+
+func checkTargetReachable(targetURL string) bool {
+	targetURL = strings.TrimSpace(targetURL)
+	if targetURL == "" {
+		return false
+	}
+
+	parsed, err := url.Parse(targetURL)
+	if err != nil || parsed.Scheme == "" || parsed.Host == "" {
+		return false
+	}
+
+	client := &http.Client{
+		Timeout: 4 * time.Second,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			if len(via) >= 5 {
+				return http.ErrUseLastResponse
+			}
+			return nil
+		},
+	}
+
+	methods := []string{http.MethodHead, http.MethodGet}
+	for _, method := range methods {
+		req, err := http.NewRequest(method, targetURL, nil)
+		if err != nil {
+			continue
+		}
+		req.Header.Set("User-Agent", "Mozilla/5.0 (Ywd-Panel status check)")
+
+		resp, err := client.Do(req)
+		if err == nil {
+			resp.Body.Close()
+			if resp.StatusCode > 0 && resp.StatusCode < 500 {
+				return true
+			}
+		}
+
+		if err != nil {
+			if ne, ok := err.(net.Error); ok && ne.Timeout() {
+				continue
+			}
+		}
+	}
+
+	return false
 }
 
 func getPageTitle(targetURL string) string {
@@ -69,7 +126,7 @@ func getPageTitle(targetURL string) string {
 	if err != nil {
 		return ""
 	}
-	req.Header.Set("User-Agent", "Mozilla/5.0 (Sun-Panel)")
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Ywd-Panel)")
 
 	resp, err := client.Do(req)
 	if err != nil {
@@ -246,6 +303,27 @@ func (a *ItemIcon) Deletes(c *gin.Context) {
 	}
 
 	apiReturn.Success(c)
+}
+
+func (a *ItemIcon) CheckStatus(c *gin.Context) {
+	req := ItemStatusCheckReq{}
+	if err := c.ShouldBindBodyWith(&req, binding.JSON); err != nil {
+		apiReturn.ErrorParamFomat(c, err.Error())
+		return
+	}
+
+	result := gin.H{}
+	for _, item := range req.Items {
+		status := "offline"
+		if checkTargetReachable(item.URL) {
+			status = "online"
+		}
+		result[fmt.Sprintf("%d", item.ID)] = gin.H{
+			"status": status,
+		}
+	}
+
+	apiReturn.SuccessData(c, result)
 }
 
 // 保存排序

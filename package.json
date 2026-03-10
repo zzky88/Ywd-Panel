@@ -1,11 +1,14 @@
 {
-  "name": "sun-panel",
-  "version": "0.0.0",
+  "name": "ywd-panel",
+  "version": "0.1.0",
   "private": false,
-  "description": "Sun-Panel Web",
-  "author": "BraisedHunter <95302870@qq.com>",
+  "description": "Ywd-Panel MVP - self-hosted navigation and status dashboard",
+  "author": "Ywd-Panel Contributors",
   "keywords": [
-    "Sun-Panel",
+    "Ywd-Panel",
+    "dashboard",
+    "navigation",
+    "self-hosted",
     "vue"
   ],
   "scripts": {

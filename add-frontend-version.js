@@ -8,23 +8,25 @@ const moment = require('moment')
 // 设置默认时区为 'Asia/Shanghai'
 const packDate = moment().utc().format('YYYYMMDD')
 
-// 要追加的内容
-const contentToAppend = `\nVITE_APP_VERSION=${packDate}`
+const versionLine = `VITE_APP_VERSION=${packDate}`
 // 读取文件原始内容
 const envFilePath = '.env'
 let envContent = fs.readFileSync(envFilePath, 'utf-8')
 
 const versionRegex = /^VITE_APP_VERSION=.*$/m
 if (versionRegex.test(envContent)) {
-  // 使用正则表达式查找并替换 VITE_APP_VERSION=* 这一行
-  envContent = envContent.replace(versionRegex, contentToAppend)
+  // 只替换版本行本身，避免每次构建把多余空行写进 .env
+  envContent = envContent.replace(versionRegex, versionLine)
 }
 else {
-  // 追加内容
-  envContent = envContent + contentToAppend
+  envContent = `${envContent.replace(/\s*$/, '')}\n${versionLine}`
 }
+
+// 规范结尾：移除版本行前后的多余空白，只保留单个换行结束
+envContent = envContent.replace(/\n*VITE_APP_VERSION=.*$/m, `\n${versionLine}`)
+envContent = `${envContent.replace(/\s*$/, '')}\n`
 
 // 将新内容写回 .env 文件
 fs.writeFileSync(envFilePath, envContent)
 
-console.log('update to .env file.', contentToAppend)
+console.log('update to .env file.', versionLine)

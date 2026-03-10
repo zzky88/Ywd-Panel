@@ -359,7 +359,7 @@ async function handleStartImport() {
         <div class="flex flex-col md:flex-row flex-wrap gap-4 w-full">
           <!-- 追加导入：支持拖拽上传 -->
           <NUpload
-            accept=".sun-panel.json,.sunpanel.json"
+            accept=".ywd-panel.json,.sun-panel.json,.sunpanel.json"
             directory-dnd
             :default-upload="false"
             :show-file-list="false"
@@ -382,7 +382,7 @@ async function handleStartImport() {
 
           <!-- 覆盖导入：支持拖拽上传 -->
           <NUpload
-            accept=".sun-panel.json,.sunpanel.json"
+            accept=".ywd-panel.json,.sun-panel.json,.sunpanel.json"
             directory-dnd
             :default-upload="false"
             :show-file-list="false"
@@ -416,8 +416,8 @@ async function handleStartImport() {
       </div>
     </div>
 
-    <div class="flex justify-center">
-      <a href="https://hslr-s.github.io/sun-panel-tool-page/#/" target="_blank">{{ $t('apps.exportImport.transmuteStandard') }}</a>
+    <div class="flex justify-center text-sm text-gray-500">
+      <span>兼容历史导入文件格式，当前默认导出为 Ywd-Panel 配置文件。</span>
     </div>
 
     <!-- 调试模式 -->

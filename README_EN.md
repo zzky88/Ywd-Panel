@@ -1,91 +1,73 @@
-[[ 简体中文 ]](https://github.com/liandu2024/AnGe-Panel/blob/main/README.md) |
-[[ English ]](https://github.com/liandu2024/AnGe-Panel/blob/main/README_EN.md)
+# Ywd-Panel
 
-<div align=center>
+Ywd-Panel is a lightweight self-hosted navigation and status dashboard for NAS, HomeLab, and internal service entry points.
 
-<img src="./doc/images/main-preview.jpg" width="100%" />
+This repository is currently being narrowed into an **MVP-first build** with a simple goal:
+- usable
+- deployable
+- easy to iterate
 
-# AnGe-Panel
+## MVP Focus
 
-[![Github](https://img.shields.io/badge/Github-123456?logo=github&labelColor=242424)](https://github.com/liandu2024/AnGe-Panel)
-[![docker](https://img.shields.io/badge/docker-123456?logo=docker&logoColor=fff&labelColor=1c7aed)](https://github.com/liandu2024/AnGe-Panel/pkgs/container/ange-panel) 
-[![Telegram](https://img.shields.io/badge/Telegram-123456?logo=telegram&labelColor=229ED9)](https://t.me/angeworld2024)
-<br>
+The first version is focused on 4 things:
 
-</div>
+1. **Grouped navigation cards**
+2. **Multi-address support** (LAN / WAN)
+3. **Basic status display** (first version of service-card status dots is now wired in)
+4. **Docker deployment**
 
-A perfect website navigation + webpage bookmarks panel.
+## Core capabilities currently kept
 
----
+- Website navigation groups
+- Webpage bookmark groups
+- Group management
+- LAN / WAN dual-address switching
+- Service-card status dots (online / offline / unknown)
+- Basic style settings
+- Login and user info
+- Local self-hosted deployment
 
-## Main Features
+## Intentionally deferred for now
 
-### 1) Left Sidebar Navigation (Quick Jump)
-![](./doc/images/sidebar-nav.jpg)
+To ship the first usable version faster, these are not the current focus:
 
-- New "group sidebar" on the left side of the page. Click dots to **jump instantly** to the corresponding group.
-- No more scrolling when you have many groups.
+- Advanced Docker management
+- Expanded multi-user permission system
+- Heavy file upload management
+- Stronger import/export tooling
+- Heavy admin features
 
-### 2) Two Collection Modes: Website + Webpage
-- **Website**: Perfect for收藏「a site」and its entry points (e.g., NAS, blog, admin panel).
-- **Webpage**: Perfect for收藏「an article / a page」link (e.g., Zhihu articles, news links, tutorial pages).
-- Switch between "Website / Webpage" freely - search conditions are preserved.
-
-### 3) Webpage Collection Enhanced
-![](./doc/images/webbookmarks.jpg)
-
-- Webpage list supports: one-click pin/unpin, quick edit, quick delete.
-- Pin/Create/Edit/Delete **won't refresh the entire page** - no flashing or jumping.
-
-### 4) Icons & Wallpapers - Separate Management with Reuse
-- Distinguish between "icons" and "wallpapers" when uploading images.
-- Previously uploaded icons/wallpapers can be **reused** from history - no need to re-upload every time.
-
-### 5) Thoughtful UX Improvements
-- Duplicate link detection (avoid saving the same URL twice).
-- Auto-ellipsis for list titles, hover to see full names.
-- Mobile-optimized experience (more compact, cleaner).
-
-![](./doc/images/mobile-1.jpg)
-![](./doc/images/mobile-2.jpg)
-
-## 🐳 Docker Deployment (Recommended)
+## Local development
 
 ```bash
-docker run -d --name ange-panel --restart=unless-stopped \
-  -p 3002:3002 \
-  -v /root/ange-data:/data \
-  ghcr.io/liandu2024/ange-panel:latest
+npm install
+npm run dev
 ```
 
-> Note: Data is persisted in `/root/ange-data` directory. You can modify settings in the panel after first startup.
+## Build
 
-## 🔐 First Login
+```bash
+npm run build
+```
 
-URL: http://[IP]:3002
-- **Default Admin Username**: `admin`
-- **Default Admin Password**: `admin`
+## Docker deployment
 
-On first startup, sample groups and example website/webpage links will be created automatically for quick testing.
+```bash
+docker compose up -d --build
+```
 
-> ⚠️ Please change your password after first login!
+Default persistent directory:
 
-## 📋 Documentation
+- `./data`
 
-- [中文文档](https://github.com/liandu2024/AnGe-Panel/blob/main/README.md)
-- [English Documentation](https://github.com/liandu2024/AnGe-Panel/blob/main/README_EN.md)
+Default access URL:
 
-## 🏖️ Community
+- `http://<your-host-ip>:3002`
 
-- [Telegram Group](https://t.me/angeworld2024)
-- [AnGe Market](https://blog.angeworld.cc/market)
+## Notes
 
----
+The codebase is currently being reshaped from an existing project into `Ywd-Panel`, so some internal historical naming may still exist. That does not block the MVP delivery and will be cleaned up gradually.
 
-## ❤️ Thanks
+## Credits
 
-- [Sun-Panel v1.3.0](https://github.com/hslr-s/sun-panel) - Original project
-
----
-
-[![Star History Chart](https://api.star-history.com/svg?repos=liandu2024/AnGe-Panel&type=Date)](https://star-history.com/#liandu2024/AnGe-Panel&Date)
+This project is being refocused from an existing open-source panel base into a more focused `Ywd-Panel` MVP.

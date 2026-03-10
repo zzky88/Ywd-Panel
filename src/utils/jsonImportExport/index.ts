@@ -3,7 +3,8 @@ import moment from 'moment'
 
 const VERSION = 1 // 当前配置文件版本
 const ALLOW_LOW_VERSION = 1 // 最小支持的配置文件版本号
-const APPNAME = 'Sun-Panel-Config'
+const APPNAME = 'Ywd-Panel-Config'
+const LEGACY_APPNAME = 'Sun-Panel-Config'
 
 export class FormatError extends Error {
   constructor(message: string) {
@@ -21,7 +22,7 @@ export class ConfigVersionLowError extends Error {
 
 export interface JsonStructure {
   version: number
-  appName: 'Sun-Panel-Config'
+  appName: 'Ywd-Panel-Config' | 'Sun-Panel-Config'
   exportTime: string
   appVersion: string
   icons?: any
@@ -85,7 +86,7 @@ export function exportJson(appVersion?: string): ExportJsonResult {
         const blob = new Blob([jsonString], { type: 'application/json' })
         const link = document.createElement('a')
         link.href = URL.createObjectURL(blob)
-        link.download = `SunPanel-Data${moment().format('YYYYMMDDHHmm')}.sun-panel.json`
+        link.download = `YwdPanel-Data${moment().format('YYYYMMDDHHmm')}.ywd-panel.json`
         link.click()
       }
     },
@@ -152,6 +153,10 @@ function transformJson(jsonData: any): JsonStructure | null {
     if (!(key in jsonData))
       return null
   }
+
+  // appName 允许兼容旧导出文件
+  if (jsonData.appName !== APPNAME && jsonData.appName !== LEGACY_APPNAME)
+    return null
 
   // 使用类型断言将 JSON 数据转换为指定类型
   const transformedData: JsonStructure = jsonData as JsonStructure
