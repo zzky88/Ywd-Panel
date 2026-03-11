@@ -5,6 +5,7 @@ import { login } from '@/api'
 import { useAppStore, useAuthStore } from '@/store'
 import { SvgIcon } from '@/components/common'
 import { router } from '@/router'
+import srcLogo from '@/assets/logo.svg'
 import { t } from '@/locales'
 import { languageOptions } from '@/utils/defaultData'
 import type { Language } from '@/store/modules/app/helper'
@@ -73,10 +74,15 @@ function handleChangeLanuage(value: Language) {
         </div>
       </div>
 
-      <div class="login-title  ">
-        <NGradientText :size="30" type="success" class="!font-bold">
-          {{ $t('common.appName') }}
-        </NGradientText>
+      <div class="login-title">
+        <div class="login-brand">
+          <div class="login-brand-logo-wrap">
+            <img :src="srcLogo" alt="Ywd-Panel logo" class="login-brand-logo">
+          </div>
+          <NGradientText :size="30" type="success" class="!font-bold">
+            {{ $t('common.appName') }}
+          </NGradientText>
+        </div>
       </div>
       <NForm :model="form" label-width="100px" @keydown.enter="handleSubmit">
         <NFormItem>
@@ -165,5 +171,26 @@ function handleChangeLanuage(value: Language) {
   .login-title{
     text-align: center;
     margin: 20px;
+  }
+
+  .login-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .login-brand-logo-wrap {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-brand-logo {
+    width: 64px;
+    height: 64px;
+    display: block;
   }
   </style>

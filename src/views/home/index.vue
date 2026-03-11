@@ -705,7 +705,7 @@ function getGroupDotTop(groupId?: number) {
       >
         <!-- 头 -->
         <div class="mx-[auto] w-[88%] max-w-[980px]">
-          <div class="top-hero mx-[auto] text-white mb-5">
+          <div v-if="panelState.panelConfig.topHeaderShow" class="top-hero mx-[auto] text-white mb-5">
             <div class="top-hero-main">
               <div class="top-hero-brand">
                 <div class="top-hero-logo-wrap">

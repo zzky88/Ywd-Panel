@@ -15,8 +15,8 @@ export function defaultStatePanelConfig(): Panel.panelConfig {
     iconTextColor: '#ffffff',
     iconTextInfoHideDescription: false,
     iconTextIconHideTitle: false,
-    // Empty by default (hide header title unless user enables it)
-    logoText: '',
+    // Default brand text shown in style settings and homepage header
+    logoText: 'Ywd-Panel',
     logoImageSrc: '',
     topHeaderShow: false,
     clockShowSecond: false,
