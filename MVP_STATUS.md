@@ -95,14 +95,23 @@ Ywd-Panel is being narrowed from an existing panel codebase into a more focused 
   - `/usr/local/opt/node@22/bin/npm run build`
 - current UI / TS changes are build-safe
 - `.env` version-line update behavior is now stable
+- local Docker build completed successfully on the maintainer machine
+- local container boot succeeded via:
+  - `docker compose up -d --build`
+- container `ywd-panel` reached `Up` state and exposed:
+  - `0.0.0.0:3002->3002/tcp`
+- local login API has been verified against a live instance:
+  - `POST /api/login`
+- browser-side first-pass check reached the point of “基本可以” after login reset/debugging
 
-### Not yet verified in this environment
-The current environment does **not** have usable `go` or `docker` commands available, so the following are still pending real runtime verification:
+### Still pending deeper runtime verification
+The project has now passed first local Docker/runtime validation, but the following still need deeper/manual confirmation before claiming broader readiness:
 
-- backend run verification
-- Docker / compose boot verification
-- browser-access verification against a live local instance
-- real API validation of `/panel/itemIcon/checkStatus`
+- broader homepage interaction verification after login
+- group / card creation-edit flow verification
+- persistence verification after restart
+- live behavior validation of `/panel/itemIcon/checkStatus`
+- multi-architecture image publish validation (current GHCR workflow temporarily narrowed to `linux/amd64` first)
 
 ## Intentional deferrals
 
@@ -124,9 +133,9 @@ To avoid breaking the backend build chain too early, these are intentionally def
 
 ## Recommended next steps
 
-1. Run real backend verification when `go` is available
-2. Run `docker compose up -d --build` when Docker is available
-3. Verify homepage + login + card status behavior in browser
+1. Verify homepage / group / card / persistence behavior in browser after the now-successful local Docker boot
+2. Re-run GHCR Docker publish after narrowing workflow to `linux/amd64`
+3. Validate service-card status dots against real reachable/unreachable targets
 4. Optionally add GitHub repository description / homepage / topics
 5. Decide whether to keep `ywd-panel-mvp` as the long-term default branch or later rename it to `main`
 6. Keep future commits grouped roughly by:
@@ -140,4 +149,4 @@ To avoid breaking the backend build chain too early, these are intentionally def
 
 At this stage, the project should be treated as:
 
-> **buildable MVP codebase with deployment defaults aligned and visible product surface mostly cleaned up, but still awaiting real backend/runtime verification before final GitHub delivery.**
+> **buildable MVP codebase with deployment defaults aligned, local Docker boot verified, login path proven on a live instance, and visible product surface mostly cleaned up — but still awaiting deeper browser/runtime verification before final release confidence.**
