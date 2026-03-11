@@ -2,21 +2,22 @@
 
 This file tracks the most practical follow-up work after the current repository cleanup phase.
 
-## 1. Runtime verification still pending
+## 1. Runtime verification has started, but deeper browser validation is still pending
 
 Status:
 
 - frontend build is verified
-- backend runtime is not yet verified in the current development environment
-- Docker runtime is not yet verified in the current development environment
+- local Docker build has been verified in a real Docker-capable environment
+- local container boot has been verified
+- login API has been verified on the live local instance
+- browser first pass reached the point of “basically usable”
 
 Follow-up:
 
-- [ ] run `docker compose up -d --build` in a real Docker-capable environment
-- [ ] verify login in browser
-- [ ] verify homepage loads correctly
+- [ ] verify homepage loads correctly after login
 - [ ] verify group/card create + edit flow
 - [ ] verify persistence across restart
+- [ ] capture any first-pass UI/runtime issues worth fixing before wider release
 
 ## 2. Service-card status dots need live validation
 
@@ -83,9 +84,9 @@ Before attempting the real verification phase, also read:
 
 ## Suggested priority order
 
-1. satisfy runtime prerequisites / use a Docker-capable environment
-2. real Docker/runtime verification
-3. service-card live validation
-4. first release-path confirmation
+1. deepen browser/runtime verification on the now-working local Docker instance
+2. service-card live validation
+3. first release-path confirmation
+4. confirm GHCR workflow behavior after narrowing publish to `linux/amd64`
 5. optional screenshots / metadata refinement
 6. deeper historical naming cleanup only if still needed

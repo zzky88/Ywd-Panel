@@ -34,15 +34,27 @@ Then open:
 
 ## Test checklist
 
+### First local runtime pass: current status
+
+Already confirmed in a real local Docker environment:
+
+- [x] Containers build successfully
+- [x] Container starts without crash loop
+- [x] Login page opens on port `3002`
+- [x] Login API can succeed on the live local instance
+- [x] Browser-side first pass reached the point of “basically usable”
+
+Still recommended for a deeper manual pass:
+
 ### 1. Basic startup
-- [ ] Containers build successfully
-- [ ] Container starts without crash loop
-- [ ] Login page opens on port `3002`
-- [ ] No obvious static asset loading failure on first screen
+- [x] Containers build successfully
+- [x] Container starts without crash loop
+- [x] Login page opens on port `3002`
+- [x] No obvious static asset loading failure on first screen
 
 ### 2. Login flow
-- [ ] Login page shows `Ywd-Panel` branding
-- [ ] User can log in successfully
+- [x] Login page shows `Ywd-Panel` branding
+- [x] User can log in successfully
 - [ ] After login, homepage opens normally
 
 ### 3. Main MVP path
@@ -81,12 +93,14 @@ Then open:
 - [ ] About page GitHub link opens the repository
 - [ ] No high-visibility old branding is seen in normal user flow
 
-## Known limitations before test
+## Known limitations after first local pass
 
-- Backend runtime has not yet been verified in the current development environment
-- Docker runtime has not yet been verified in the current development environment
-- Some internal historical Go naming still exists intentionally
-- Build currently shows large-chunk warnings, but frontend build still succeeds
+- deeper homepage / interaction verification is still pending
+- group / card create-edit flow is still pending explicit confirmation
+- persistence after restart is still pending explicit confirmation
+- status-dot behavior still needs targeted live validation
+- some internal historical Go naming still exists intentionally
+- build currently shows large-chunk warnings, but frontend build still succeeds
 
 ## Troubleshooting reference
 
