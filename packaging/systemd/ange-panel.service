@@ -1,14 +1,14 @@
 [Unit]
-Description=AnGe-Panel
+Description=Ywd-Panel
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-User=ange-panel
-Group=ange-panel
-WorkingDirectory=/opt/ange-panel
-ExecStart=/opt/ange-panel/ange-panel
+User=ywd-panel
+Group=ywd-panel
+WorkingDirectory=/opt/ywd-panel
+ExecStart=/opt/ywd-panel/ywd-panel
 Restart=always
 RestartSec=2
 LimitNOFILE=1048576

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_NAME="ange-panel"
-REPO="liandu2024/AnGe-Panel"
+APP_NAME="ywd-panel"
+REPO="zzky88/Ywd-Panel"
 INSTALL_DIR="/opt/${APP_NAME}"
 BIN_NAME="${APP_NAME}"
 PORT=""
@@ -11,19 +11,19 @@ CHANNEL="release"  # reserved
 
 usage() {
   cat <<'USAGE'
-AnGe-Panel one-line installer (systemd)
+Ywd-Panel one-line installer (systemd)
 
 Usage:
-  curl -fsSL https://raw.githubusercontent.com/liandu2024/AnGe-Panel/main/scripts/install.sh | sudo bash -s -- [options]
+  curl -fsSL https://raw.githubusercontent.com/zzky88/Ywd-Panel/main/scripts/install.sh | sudo bash -s -- [options]
 
 Options:
   --version vX.Y.Z   Install specific version (default: latest release)
   --port 3003        Set http port in conf/conf.ini (default: keep package default)
-  --dir /opt/ange-panel  Install directory (default: /opt/ange-panel)
+  --dir /opt/ywd-panel  Install directory (default: /opt/ywd-panel)
   --help             Show this help
 
 Notes:
-- This script installs to /opt and creates a systemd service: ange-panel.service
+- This script installs to /opt and creates a systemd service: ywd-panel.service
 - If you re-run it, it will overwrite files in the install dir.
 USAGE
 }
@@ -157,7 +157,7 @@ main() {
   # systemd service
   cat > "/etc/systemd/system/${APP_NAME}.service" <<SERVICE
 [Unit]
-Description=AnGe-Panel
+Description=Ywd-Panel
 After=network.target
 
 [Service]
