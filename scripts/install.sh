@@ -14,7 +14,7 @@ usage() {
 Ywd-Panel one-line installer (systemd)
 
 Usage:
-  curl -fsSL https://raw.githubusercontent.com/zzky88/Ywd-Panel/main/scripts/install.sh | sudo bash -s -- [options]
+  curl -fsSL https://raw.githubusercontent.com/zzky88/Ywd-Panel/ywd-panel-mvp/scripts/install.sh | sudo bash -s -- [options]
 
 Options:
   --version vX.Y.Z   Install specific version (default: latest release)
