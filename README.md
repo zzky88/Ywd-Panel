@@ -73,6 +73,7 @@ docker compose up -d --build
 - `./TROUBLESHOOTING.md`
 - `./RELEASE_CHECKLIST.md`
 - `./REPO_METADATA.md`
+- `./OPEN_ISSUES.md`
 
 ## 说明
 
