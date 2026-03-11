@@ -9,10 +9,11 @@
 
 ## Recommended repository positioning
 
-Suggested repo direction:
+Current repository direction:
 
 - repository name: `Ywd-Panel`
-- branch to publish first: `ywd-panel-mvp`
+- active public branch: `ywd-panel-mvp`
+- remote default branch: `ywd-panel-mvp`
 - initial public framing: **MVP / preview / self-hosted dashboard**
 
 Do **not** overclaim production-readiness yet.
@@ -98,18 +99,34 @@ Suggested message:
 Suggested message:
 - `docs: add MVP status and GitHub handoff notes`
 
-## Suggested pre-push checklist
+## Suggested GitHub housekeeping checklist
 
-Before pushing to GitHub:
+Current status:
 
-- [ ] confirm remote repository name
-- [ ] confirm whether to keep branch name `ywd-panel-mvp` or rename to `main`
-- [ ] run frontend build one more time
-- [ ] inspect `git status`
+- [x] remote repository created
+- [x] MVP branch `ywd-panel-mvp` pushed
+- [x] remote default branch currently points to `ywd-panel-mvp`
+
+Recommended next repository housekeeping:
+
+- [ ] add repository description
+- [ ] add repository website / homepage if desired
+- [ ] decide whether to keep `ywd-panel-mvp` long-term or later rename to `main`
+- [ ] run frontend build again before any release tag
+- [ ] inspect `git status` before each push
 - [ ] ensure no runtime data is staged
-- [ ] ensure `.env` only contains intended version-line change
 - [ ] ensure README wording matches actual verification status
 - [ ] decide whether to include screenshots now or later
+
+## Suggested GitHub repository metadata
+
+Suggested description:
+
+> Ywd-Panel is a self-hosted navigation and status dashboard focused on grouped service cards, LAN/WAN dual-address access, and a lightweight MVP deployment experience.
+
+Suggested homepage:
+
+> https://github.com/zzky88/Ywd-Panel/tree/ywd-panel-mvp
 
 ## Suggested GitHub release wording
 
@@ -129,13 +146,12 @@ These are the main blockers for stronger delivery wording:
 - no `docker` command available in current environment
 - no live browser verification against a running local instance yet
 
-## Next practical action when upload time comes
+## Next practical action from here
 
-1. create the target GitHub repository
-2. add remote
-3. push `ywd-panel-mvp`
-4. verify README rendering on GitHub
-5. optionally open a follow-up issue for:
+1. verify README rendering on GitHub
+2. optionally add repository description / homepage / topics
+3. open a follow-up issue for:
    - backend runtime verification
    - Docker runtime verification
    - Go module renaming later
+4. decide whether to keep `ywd-panel-mvp` as the long-term default branch or later rename it
