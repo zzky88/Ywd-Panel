@@ -5,10 +5,35 @@
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 	<meta content="yes" name="apple-mobile-web-app-capable"/>
 	<link rel="apple-touch-icon" href="/favicon.ico">
-	<link rel="stylesheet"  href="/custom/index.css">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
 	<title>Ywd-Panel</title>
+	<script>
+		(function () {
+			function loadOptionalAsset(url, type) {
+				fetch(url, { method: 'HEAD' })
+					.then(function (res) {
+						if (!res.ok) return;
+						if (type === 'css') {
+							var link = document.createElement('link');
+							link.rel = 'stylesheet';
+							link.href = url;
+							document.head.appendChild(link);
+						}
+						if (type === 'js') {
+							var script = document.createElement('script');
+							script.src = url;
+							document.body.appendChild(script);
+						}
+					})
+					.catch(function () {});
+			}
+			loadOptionalAsset('/custom/index.css', 'css');
+			window.addEventListener('DOMContentLoaded', function () {
+				loadOptionalAsset('/custom/index.js', 'js');
+			});
+		})();
+	</script>
 </head>
 
 <body class="dark:bg-black">
@@ -79,7 +104,6 @@
 		</div>
 	</div>
 	<script type="module" src="/src/main.ts"></script>
-	<script src="/custom/index.js"></script>
 </body>
 
 </html>
