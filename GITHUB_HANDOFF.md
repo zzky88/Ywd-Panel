@@ -111,6 +111,7 @@ Recommended next repository housekeeping:
 
 - [ ] add repository description
 - [ ] add repository website / homepage if desired
+- [ ] optionally apply `REPO_METADATA.md` suggestions for description / homepage / topics
 - [ ] decide whether to keep `ywd-panel-mvp` long-term or later rename to `main`
 - [ ] run frontend build again before any release tag
 - [ ] inspect `git status` before each push

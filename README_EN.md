@@ -72,6 +72,7 @@ For the first real deployment / runtime verification, see:
 - `./TEST_PLAN.md`
 - `./TROUBLESHOOTING.md`
 - `./RELEASE_CHECKLIST.md`
+- `./REPO_METADATA.md`
 
 ## Notes
 
