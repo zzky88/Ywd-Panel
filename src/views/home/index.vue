@@ -2,6 +2,7 @@
 import { VueDraggable } from 'vue-draggable-plus'
 import { NBackTop, NButton, NButtonGroup, NDropdown, NModal, NSkeleton, NSpin, NEllipsis, useDialog, useMessage } from 'naive-ui'
 import { computed, nextTick, onMounted, onUnmounted, ref, h } from 'vue'
+import srcLogo from '@/assets/logo.svg'
 
 const isMobile = ref(false)
 function updateIsMobile() {
@@ -55,6 +56,14 @@ const settingModalShow = ref(false)
 const items = ref<ItemGroup[]>([])
 const filterItems = ref<ItemGroup[]>([])
 const currentGroupType = ref<'website' | 'webpage'>('website')
+
+const headerTitle = computed(() => panelState.panelConfig.logoText || 'Ywd-Panel')
+const footerContent = computed(() => {
+  const raw = panelState.panelConfig.footerHtml || ''
+  if (raw.trim())
+    return raw
+  return '&copy; 2026 Ywd-Panel. All rights reserved.'
+})
 
 // 去掉分页逻辑代码，直接返回 items
 // const webpagePagination = ref<Record<number, number>>({})
@@ -695,18 +704,25 @@ function getGroupDotTop(groupId?: number) {
         }"
       >
         <!-- 头 -->
-        <div class="mx-[auto] w-[80%]">
-          <div v-if="panelState.panelConfig.topHeaderShow" class="flex mx-[auto] items-center justify-center text-white">
-            <div class="logo">
-              <span class="text-2xl md:text-6xl font-bold text-shadow">
-                {{ panelState.panelConfig.logoText }}
-              </span>
-            </div>
-            <div class="divider text-base lg:text-2xl mx-[10px]">
-              |
-            </div>
-            <div class="text-shadow">
-              <Clock :hide-second="!panelState.panelConfig.clockShowSecond" />
+        <div class="mx-[auto] w-[88%] max-w-[980px]">
+          <div class="top-hero mx-[auto] text-white mb-5">
+            <div class="top-hero-main">
+              <div class="top-hero-brand">
+                <div class="top-hero-logo-wrap">
+                  <img :src="srcLogo" alt="Ywd-Panel logo" class="top-hero-logo">
+                </div>
+                <div class="top-hero-text">
+                  <div class="top-hero-title text-shadow">
+                    {{ headerTitle }}
+                  </div>
+                  <div class="top-hero-subtitle text-white/75">
+                    your self-hosted dashboard
+                  </div>
+                </div>
+              </div>
+              <div class="top-hero-clock text-shadow">
+                <Clock :hide-second="!panelState.panelConfig.clockShowSecond" />
+              </div>
             </div>
           </div>
           <div
@@ -961,7 +977,7 @@ function getGroupDotTop(groupId?: number) {
             </div>
           </div>
         </div>
-        <div class="mt-5 footer" v-html="panelState.panelConfig.footerHtml" />
+        <div class="mt-8 footer footer-copyright" v-html="footerContent" />
       </div>
     </div>
 
@@ -1153,6 +1169,112 @@ html {
 :global(.fixed-tools-wrapper .n-button-group),
 :global(.backtop-wrapper .n-button-group) {
   background: transparent !important;
+}
+
+.top-hero {
+  display: flex;
+  justify-content: center;
+}
+
+.top-hero-main {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.26);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+.top-hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.top-hero-logo-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.top-hero-logo {
+  width: 34px;
+  height: 34px;
+}
+
+.top-hero-text {
+  min-width: 0;
+}
+
+.top-hero-title {
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.top-hero-subtitle {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.top-hero-clock {
+  min-width: 120px;
+  text-align: right;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .top-hero-main {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .top-hero-clock {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 500px) {
+  .top-hero-main {
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .top-hero-logo-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .top-hero-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .top-hero-subtitle {
+    font-size: 0.82rem;
+  }
 }
 
 .icon-info-box {

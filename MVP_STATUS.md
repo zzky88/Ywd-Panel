@@ -19,6 +19,9 @@ Ywd-Panel is being narrowed from an existing panel codebase into a more focused 
 - `index.html` title updated to `Ywd-Panel`
 - login page footer updated to `Ywd-Panel MVP preview`
 - About page rewritten to a neutral MVP-facing version
+- homepage top area upgraded with `logo + title + clock` header presentation
+- default homepage footer now falls back to a copyright-style `Ywd-Panel` line when no custom footer is configured
+- visible logo asset updated from the inherited shape to a `Y`-styled `Ywd-Panel` brand mark
 - package metadata updated:
   - name: `ywd-panel`
   - version: `0.1.0`
