@@ -64,6 +64,12 @@ Default access URL:
 
 - `http://<your-host-ip>:3002`
 
+## Test plan
+
+For the first real deployment / runtime verification, see:
+
+- `./TEST_PLAN.md`
+
 ## Notes
 
 The codebase is currently being reshaped from an existing project into `Ywd-Panel`, so some internal historical naming may still exist. That does not block the MVP delivery and will be cleaned up gradually.

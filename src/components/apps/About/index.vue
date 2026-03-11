@@ -15,6 +15,12 @@ interface Version {
 const versionName = ref('')
 const frontVersion = import.meta.env.VITE_APP_VERSION || 'unknown'
 
+const githubUrl = 'https://github.com/zzky88/Ywd-Panel/tree/ywd-panel-mvp'
+
+function openLink(url: string) {
+  window.open(url, '_blank')
+}
+
 onMounted(() => {
   get<Version>().then((res) => {
     if (res.code === 0)
@@ -45,9 +51,9 @@ onMounted(() => {
     </NDivider>
     <div class="flex flex-col items-center justify-center text-base">
       <div class="flex mt-[10px] flex-wrap justify-center">
-        <div class="flex items-center mx-[10px]">
+        <div class="flex items-center mx-[10px] cursor-pointer" @click="openLink(githubUrl)">
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcGithub" alt="">
-          <span class="link">GitHub (to be connected)</span>
+          <span class="link">GitHub Repo</span>
         </div>
         <div class="flex items-center mx-[10px]">
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcTelegram" alt="">
@@ -57,6 +63,9 @@ onMounted(() => {
           <img class="w-[20px] h-[20px] mr-[5px]" :src="srcMarket" alt="">
           <span class="link">Navigation + status panel</span>
         </div>
+      </div>
+      <div class="mt-2 text-xs text-gray-400 text-center break-all">
+        {{ githubUrl }}
       </div>
 
       <div class="mt-5">
