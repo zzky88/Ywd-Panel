@@ -6,6 +6,10 @@ Use this checklist when running the first real deployment / runtime verification
 
 This is intentionally a **small MVP test plan**, not a full QA matrix.
 
+If you only need the shortest first-run command path, see:
+
+- `./FIRST_RUN.md`
+
 ## Environment assumptions
 
 A machine with at least:
