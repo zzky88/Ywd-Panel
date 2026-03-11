@@ -69,6 +69,7 @@ docker compose up -d --build
 首次真实部署 / 实测建议参考：
 
 - `./TEST_PLAN.md`
+- `./TROUBLESHOOTING.md`
 
 ## 说明
 

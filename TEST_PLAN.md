@@ -80,6 +80,12 @@ Then open:
 - Some internal historical Go naming still exists intentionally
 - Build currently shows large-chunk warnings, but frontend build still succeeds
 
+## Troubleshooting reference
+
+If the first live run fails, also check:
+
+- `./TROUBLESHOOTING.md`
+
 ## What to record if a problem appears
 
 When reporting a failure, try to capture:

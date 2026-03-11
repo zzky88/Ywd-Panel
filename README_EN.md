@@ -69,6 +69,7 @@ Default access URL:
 For the first real deployment / runtime verification, see:
 
 - `./TEST_PLAN.md`
+- `./TROUBLESHOOTING.md`
 
 ## Notes
 
