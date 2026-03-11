@@ -1,8 +1,8 @@
-name: docker-push
+name: Ywd-Panel Docker Push (manual)
 
 on:
   workflow_dispatch:
-  # 暂时取消自动编译，优化后重新开启
+  # 保留为手动 DockerHub 发布链路；当前自动 GHCR 发布见 docker-publish.yml
   # push:
   #   tags:
   #     - 'v*'
