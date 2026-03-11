@@ -82,6 +82,12 @@ Ywd-Panel is being narrowed from an existing panel codebase into a more focused 
 - startup log wording updated to `Ywd-Panel`
 - item metadata fetch UA updated to `Mozilla/5.0 (Ywd-Panel)`
 
+## Repository status
+
+- GitHub repository is live: `https://github.com/zzky88/Ywd-Panel`
+- Active public branch: `ywd-panel-mvp`
+- Remote default branch currently points to `ywd-panel-mvp`
+
 ## What has been verified
 
 ### Verified
@@ -121,12 +127,14 @@ To avoid breaking the backend build chain too early, these are intentionally def
 1. Run real backend verification when `go` is available
 2. Run `docker compose up -d --build` when Docker is available
 3. Verify homepage + login + card status behavior in browser
-4. Prepare a clean Git history split by:
+4. Optionally add GitHub repository description / homepage / topics
+5. Decide whether to keep `ywd-panel-mvp` as the long-term default branch or later rename it to `main`
+6. Keep future commits grouped roughly by:
    - branding / metadata
    - deployment defaults
    - status-dot feature
    - compatibility cleanup
-5. Create / connect the target GitHub repository and push the MVP branch
+   - runtime verification
 
 ## Practical handoff note
 
