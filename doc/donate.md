@@ -1,9 +1,19 @@
-> Open source development is not easy. If you feel that my project has been helpful to you, please feel free to buy me a cup of coffee ☕ (If possible, leave your nickname, name, or email in the note). Your support is my motivation. Thank you.
+# 支持项目
 
-<a href="https://www.paypal.me/hslrs">
-<img height="60" src="./images/donate/paypal.png" target="_blank"></img> 
-</a>
+当前仓库以 `Ywd-Panel` MVP 收口与验证为主。
 
-|  WeChatPay | AliPay  |
-| ------------ | ------------ |
-| <img style="max-height:400px;box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius: 25px;" src="./images/donate/weixin.png"></img> |  <img style="max-height:400px;box-shadow: 0 0 10px rgba(0,0,0,0.5);border-radius: 25px;" src="./images/donate/alipay.png"></img> |
+如果后续要对外公开维护，并且确实需要赞助页，建议在以下条件都明确后再补充：
+
+- 维护者身份明确
+- 收款方式明确
+- 对外仓库说明已稳定
+- README / GitHub 首页已统一口径
+
+在此之前，仓库内不默认保留旧项目作者的赞助信息，以免造成项目归属和支持对象混淆。
+
+如果将来需要恢复赞助入口，建议重新编写：
+
+- 维护说明
+- 赞助用途
+- 当前维护者收款方式
+- 联系方式 / 留言方式

@@ -3,7 +3,7 @@
 ## Current repository working state
 
 - Working directory: `/Users/kyle/.openclaw/workspace/AnGe-Panel`
-- Active branch intended for MVP work: `ywd-panel-mvp`
+- Active working branch: `ywd-panel-mvp`
 - Current product name: `Ywd-Panel`
 - Current package version: `0.1.0`
 
