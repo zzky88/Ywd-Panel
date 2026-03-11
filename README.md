@@ -74,6 +74,7 @@ docker compose up -d --build
 - `./RELEASE_CHECKLIST.md`
 - `./REPO_METADATA.md`
 - `./OPEN_ISSUES.md`
+- `./RUNTIME_PREREQUISITES.md`
 
 ## 说明
 

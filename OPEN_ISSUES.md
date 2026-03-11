@@ -75,10 +75,17 @@ Follow-up:
 - [ ] decide whether to create first preview release after runtime checks
 - [ ] decide whether to keep `ywd-panel-mvp` long-term or later rename to `main`
 
+## Runtime prerequisites reference
+
+Before attempting the real verification phase, also read:
+
+- `./RUNTIME_PREREQUISITES.md`
+
 ## Suggested priority order
 
-1. real Docker/runtime verification
-2. service-card live validation
-3. first release-path confirmation
-4. optional screenshots / metadata refinement
-5. deeper historical naming cleanup only if still needed
+1. satisfy runtime prerequisites / use a Docker-capable environment
+2. real Docker/runtime verification
+3. service-card live validation
+4. first release-path confirmation
+5. optional screenshots / metadata refinement
+6. deeper historical naming cleanup only if still needed

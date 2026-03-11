@@ -74,6 +74,7 @@ For the first real deployment / runtime verification, see:
 - `./RELEASE_CHECKLIST.md`
 - `./REPO_METADATA.md`
 - `./OPEN_ISSUES.md`
+- `./RUNTIME_PREREQUISITES.md`
 
 ## Notes
 

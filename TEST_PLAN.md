@@ -12,6 +12,10 @@ If you only need the shortest first-run command path, see:
 
 ## Environment assumptions
 
+If you are still blocked by local environment/tooling availability, check first:
+
+- `./RUNTIME_PREREQUISITES.md`
+
 A machine with at least:
 
 - Docker / Docker Compose available
