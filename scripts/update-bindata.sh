@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # Regenerate assets/bindata.go from ./assets
+# Historical helper retained for Ywd-Panel repository maintenance.
 # NOTE: bindata.go is committed to keep CI deterministic across architectures.
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

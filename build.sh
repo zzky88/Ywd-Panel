@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Historical/manual release helper kept for reference.
+# Current Ywd-Panel MVP delivery is primarily aligned around README/docker compose,
+# TEST_PLAN.md, and GitHub workflows rather than this script.
+# Some legacy names and paths are intentionally preserved here to avoid breaking
+# older build assumptions before real runtime verification is completed.
+
 REPO=$(
   cd $(dirname $0)
   pwd
@@ -162,8 +168,11 @@ release() {
 }
 
 usage() {
-  # echo "Usage: $0 [-f] [-c] [-b] [-r]" 1>&2
-  echo "Usage: $0 [-f]  [-b] [-r]" 1>&2
+  echo "Historical/manual build helper for Ywd-Panel legacy release flow" 1>&2
+  echo "Usage: $0 [-f] [-b] [-r]" 1>&2
+  echo "  -f  build frontend" 1>&2
+  echo "  -b  legacy combined flag (frontend + binary)" 1>&2
+  echo "  -r  legacy release packaging flow" 1>&2
   exit 1
 }
 
