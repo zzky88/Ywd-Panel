@@ -3,7 +3,7 @@ name: Build & Publish Docker Image
 on:
   push:
     branches:
-      - main
+      - ywd-panel-mvp
     tags:
       - "v*"
   workflow_dispatch: {}
@@ -43,7 +43,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=dev,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=dev,enable=${{ github.ref == 'refs/heads/ywd-panel-mvp' }}
             type=ref,event=tag,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
 
