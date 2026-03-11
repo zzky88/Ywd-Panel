@@ -155,3 +155,4 @@ These are the main blockers for stronger delivery wording:
    - Docker runtime verification
    - Go module renaming later
 4. decide whether to keep `ywd-panel-mvp` as the long-term default branch or later rename it
+5. use `RELEASE_CHECKLIST.md` before creating the first public tag / release

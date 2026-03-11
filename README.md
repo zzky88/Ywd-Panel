@@ -71,6 +71,7 @@ docker compose up -d --build
 - `./FIRST_RUN.md`
 - `./TEST_PLAN.md`
 - `./TROUBLESHOOTING.md`
+- `./RELEASE_CHECKLIST.md`
 
 ## 说明
 
